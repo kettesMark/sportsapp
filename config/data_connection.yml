@@ -1,0 +1,8 @@
+URL: https://www.betvictor.com/bv_in_play/v2/en-gb/1/mini_inplay.json
+
+use_proxy: true
+proxy:
+  URL: "154.28.85.234"
+  port: 29842
+  username: mszabo
+  password: fD94VT5h
