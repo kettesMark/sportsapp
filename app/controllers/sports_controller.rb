@@ -1,5 +1,6 @@
 class SportsController < ApplicationController
-  require './lib/api_data.rb'
+
+  # currently it returns json, but it should return html/js
   def index
     render :json => SportsHelper.get_sports_data.to_json
   end
