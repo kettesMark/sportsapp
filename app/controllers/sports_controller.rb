@@ -2,7 +2,7 @@ class SportsController < ApplicationController
 
   # currently it returns json, but it should return html/js
   def index
-    render :json => SportsHelper.get_sports_data.to_json
+    resp =SportsHelper.get_sports_data.to_json
   end
 
   def all_sports

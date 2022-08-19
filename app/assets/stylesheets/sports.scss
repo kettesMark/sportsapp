@@ -1,3 +1,24 @@
 // Place all the styles related to the sports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+table {
+    margin: auto;
+    width: 50%;
+    border-collapse: collapse;
+}
+ td {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+
+#root{
+    text-align: center;  
+}
+ul {
+    list-style-type: none;   
+}
+
+li {
+    display:inline-block;
+}

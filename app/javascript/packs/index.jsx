@@ -1,8 +1,11 @@
 import React from "react";
-import { render } from "react-dom";
+import ReactDOM from "react-dom/client";
+import Sportsapp from "../components/Sportsapp";
 
-document.addEventListener("DOMContentLoaded", () => {
-  render(
-    document.body.appendChild(document.createElement("div")),
-  )
-});
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root')
+);
+root.render(
+  <Sportsapp />
+);
