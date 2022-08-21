@@ -6,6 +6,13 @@ class Sport extends React.Component {
   
   columns = [
     {
+      title: "#",
+      dataIndex: "pos",
+      key: "pos",
+      sorter: (a, b) => a.pos - b.pos,
+        defaultSortOrder: "ascend",
+    },
+    {
       title: "ID",
       dataIndex: "id",
       key: "id",
@@ -62,7 +69,7 @@ class Sport extends React.Component {
   render() {
     return (
       <>
-        <Table className="table-striped-rows" dataSource={this.state.sports} columns={this.columns} pagination={{ pageSize: 20 }} />
+        <Table className="table-striped-rows" dataSource={this.state.sports} columns={this.columns} pagination={{ pageSize: 20 }} rowKey="pos"/>
       </>
     );
   }

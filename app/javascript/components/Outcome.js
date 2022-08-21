@@ -12,14 +12,21 @@ class Outcome extends React.Component {
 
   columns = [
     {
+        title: "#",
+        dataIndex: "key",
+        key: "key",
+        sorter: (a, b) => a.key - b.key,
+        defaultSortOrder: "ascend",
+    },
+    {
         title: "Description",
         dataIndex: "desc",
         key: "desc",
     },
     {
-      title: "Fractional odds",
-      dataIndex: "pr",
-      key: "pr",
+        title: "Fractional odds",
+        dataIndex: "pr",
+        key: "pr",
     },
     {
         title: "Decimal odds",
@@ -44,8 +51,7 @@ class Outcome extends React.Component {
       .then((data) => {
           data.forEach((outcResp) =>{
               const newOutcome = {
-                  key: outcResp.pos,
-                  id: outcResp.id,
+                  key: (outcResp.pos == null) ? outcResp.id : outcResp.pos,
                   desc: outcResp.desc,
                   pos: outcResp.pos,
                   prd: outcResp.prd,
@@ -66,8 +72,10 @@ class Outcome extends React.Component {
   render() {
     return (
       <>
-        <Table className="table-striped-rows" dataSource={this.state.outcomes} columns={this.columns} pagination={{ pageSize: 20 }} />
-
+        <Table className="table-striped-rows" dataSource={this.state.outcomes} columns={this.columns} pagination={{ pageSize: 20 }} rowKey="key" />
+        <div id="go-back-cont">
+          <button onClick={() => this.props.navigate(-1)}>Go back</button>
+        </div>
       </>
     );
   }

@@ -3,6 +3,10 @@ class SportsController < ApplicationController
   # currently it returns json, but it should return html/js
   def index
     resp =SportsHelper.get_sports_data.to_json
+    respond_to do |format|
+      format.html
+      format.json {render :json => resp}
+    end
   end
 
   def all_sports
@@ -26,7 +30,7 @@ class SportsController < ApplicationController
     if sport.present?
       event = sport.events.find{ |ev| ev.id == params[:event_id].to_i}
       if event.present?
-        render :json => event.outcomes.to_json(:only => ["desc", "pr", "pos", "prd"] ) and return
+        render :json => event.outcomes.to_json(:only => ["desc", "pr", "pos", "prd", "id"] ) and return
       end
     end
     render json: {}, status: :not_found

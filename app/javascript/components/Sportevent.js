@@ -1,16 +1,22 @@
 import { Table, message } from "antd";
 import React from "react";
 import withRouter from './withRouter';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 class Sportevent extends React.Component {
-    state = { 
-      events: [],
-      id: this.props.params.sportId,
-    };
-  
+  state = { 
+    events: [],
+    id: this.props.params.sportId,
+  };
 
   columns = [
+    {
+      title: "#",
+      dataIndex: "pos",
+      key: "pos",
+      sorter: (a, b) => a.pos - b.pos,
+        defaultSortOrder: "ascend",
+    },
     {
       title: "ID",
       dataIndex: "id",
@@ -70,8 +76,10 @@ class Sportevent extends React.Component {
   render() {
     return (
       <>
-        <Table className="table-striped-rows" dataSource={this.state.events} columns={this.columns} pagination={{ pageSize: 20 }} />
-
+        <Table className="table-striped-rows" dataSource={this.state.events} columns={this.columns} pagination={{ pageSize: 20 }} rowKey="pos"/>
+        <div id="go-back-cont">
+          <button onClick={() => this.props.navigate(-1)}>Go back</button>
+        </div>
       </>
     );
   }

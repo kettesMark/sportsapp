@@ -7,7 +7,7 @@ class SportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "get sports index returns structured response" do
-    get sports_index_path
+    get "/", as: :json
     response.parsed_body
     assert ((response.parsed_body[0].has_key? "events") && (response.parsed_body[0]["events"][0].has_key? "outcomes"))
   end
